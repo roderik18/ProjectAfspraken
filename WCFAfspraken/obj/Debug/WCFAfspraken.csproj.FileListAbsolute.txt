@@ -1,0 +1,6 @@
+C:\Users\Roderik\Documents\_Projectwerk\WCFAfspraken\WCFAfspraken\bin\WCFAfspraken.dll.config
+C:\Users\Roderik\Documents\_Projectwerk\WCFAfspraken\WCFAfspraken\bin\WCFAfspraken.dll
+C:\Users\Roderik\Documents\_Projectwerk\WCFAfspraken\WCFAfspraken\bin\WCFAfspraken.pdb
+C:\Users\Roderik\Documents\_Projectwerk\WCFAfspraken\WCFAfspraken\obj\Debug\WCFAfspraken.csprojResolveAssemblyReference.cache
+C:\Users\Roderik\Documents\_Projectwerk\WCFAfspraken\WCFAfspraken\obj\Debug\WCFAfspraken.dll
+C:\Users\Roderik\Documents\_Projectwerk\WCFAfspraken\WCFAfspraken\obj\Debug\WCFAfspraken.pdb
