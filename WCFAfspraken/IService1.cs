@@ -15,6 +15,12 @@ namespace WCFAfspraken
     {
 
         [OperationContract]
+        List<Afspraak> GetAll();
+
+        [OperationContract]
+        List<Afspraak> GetInvites();
+
+        [OperationContract]
         List<Afspraak> GetAfspraken();
     }
 

@@ -22,5 +22,15 @@ namespace WCFAfspraken
         {
             return data.GetAfspraken();
         }
+
+        public List<Afspraak> GetAll()
+        {
+            return data.GetAll();
+        }
+
+        public List<Afspraak> GetInvites()
+        {
+            return data.GetInvites();
+        }
     }
 }
