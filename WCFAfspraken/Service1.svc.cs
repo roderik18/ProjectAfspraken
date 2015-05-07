@@ -32,5 +32,20 @@ namespace WCFAfspraken
         {
             return data.GetInvites();
         }
+
+        public void VastUpdate(Afspraak af)
+        {
+            data.VastUpdate(af);
+        }
+
+        public void Delete(Afspraak af)
+        {
+            data.Delete(af);
+        }
+
+        public void NewAfspraak(Afspraak af)
+        {
+            data.NewAfspraak(af);
+        }
     }
 }

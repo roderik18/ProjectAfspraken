@@ -22,6 +22,15 @@ namespace WCFAfspraken
 
         [OperationContract]
         List<Afspraak> GetAfspraken();
+
+        [OperationContract]
+        void VastUpdate(Afspraak a);
+
+        [OperationContract]
+        void Delete(Afspraak a);
+
+        [OperationContract]
+        void NewAfspraak(Afspraak a);
     }
 
 
@@ -50,11 +59,18 @@ namespace WCFAfspraken
         [DataMember]
         public Boolean Vastgelegd { get; set; }
 
+        public Afspraak()
+        {
+
+        }
+
         public void VastLeggen()
         {
             if (!this.Vastgelegd)
             {
                 this.Vastgelegd = true;
+                //Stuur bericht naar cursist dat afspraak is vastgelegd
+                new AfspraakDB().VastUpdate(this);
             }
         }
 
@@ -65,12 +81,24 @@ namespace WCFAfspraken
                 this.Vastgelegd = false;
                 //Stuur bericht naar afzender (cursist) dat afspraak gecancelled is.
                 //comment van TB met rede
+                new AfspraakDB().Delete(this);
             }
         }
 
-        public void NietVastleggen()
-        { //stuur bericht naar cursist dat afspraak niet is vastgelegd.
-            //comment van TB met rede
+        public void CancelInv()
+        {
+            if (!this.Vastgelegd)
+            {
+                //stuur bericht naar cursist dat afspraak niet is vastgelegd.
+                //comment van TB met rede
+                new AfspraakDB().Delete(this);
+            }
+        }
+
+        public void Opslaan()
+        {
+            //Slaagt de afspraak op in de database
+            new AfspraakDB().NewAfspraak(this);
         }
     }
 

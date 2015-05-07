@@ -143,6 +143,56 @@ namespace WCFAfspraken
             return list;
         }
 
+        public void VastUpdate(Afspraak a)
+        {
+            int bit;
+            if (a.Vastgelegd){bit = 1;}
+            else{bit = 0;}
+            string sql = "UPDATE Afspraken SET Vastgelegd=" + bit.ToString() + " WHERE Id=" + a.Id;
+
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
+
+        public void Delete(Afspraak a)
+        {
+            string sql = "DELETE FROM Afspraken WHERE Id = " + a.Id.ToString();
+
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
+
+        public void NewAfspraak(Afspraak a)
+        {
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO Afspraken(CursistId, TBid, StartUur, Stopuur, Comments, Vastgelegd) VALUES (@Cid, @TBid, @Start, @Stop, @Com, 0)", con);
+                cmd.Parameters.AddWithValue("@Cid", a.cursist.CursistId);
+                cmd.Parameters.AddWithValue("@TBid", a.TB.TBid);
+                cmd.Parameters.AddWithValue("@Start", a.StartUur.ToString());
+                cmd.Parameters.AddWithValue("@Stop", a.StopUur.ToString());
+                cmd.Parameters.AddWithValue("@Com", a.Comments);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
          private string GetConnectionString()
         {
             return "Data Source=RODERIK-PC\\SQLEXPRESS;Initial Catalog=CursistAfspraken;Integrated Security=True";
